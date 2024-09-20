@@ -165,8 +165,9 @@ jobs:
             path: qa_flow_quality_eval.json
 
   build-image:
+    if: '!cancelled()'
     runs-on: ubuntu-latest
-    needs: [setup-env-job, unit-testing, code-standard-check, flow-evaluation]    
+    needs: [flow-evaluation]
     environment: dev 
     steps:
       - uses: actions/checkout@v4      
